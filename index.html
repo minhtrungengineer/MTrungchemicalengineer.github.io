@@ -3,13 +3,2039 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cao Minh Trung | Quantum Materials Research</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="Cao Minh Trung — Materials Science Engineer researching quantum tunneling and hydrogen adsorption in MOF–Aerogel composites at cryogenic temperatures." />
+    <title>Cao Minh Trung · Quantum Materials Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      /* ============================================================
+         QUANTUM MATERIALS — RESEARCH PORTFOLIO
+         Dark mode · Cyan / deep blue / quantum violet · Glassmorphism
+         ============================================================ */
+
+      :root {
+        --bg-0: #03050d;
+        --bg-1: #060a1c;
+        --bg-2: #0a1230;
+        --surface: rgba(15, 22, 55, 0.45);
+        --surface-hi: rgba(30, 40, 90, 0.55);
+        --border: rgba(120, 200, 255, 0.12);
+        --border-hi: rgba(120, 220, 255, 0.28);
+
+        --cyan: #00e5ff;
+        --cyan-soft: #5ef0ff;
+        --deep-blue: #1e3a8a;
+        --violet: #a855f7;
+        --violet-soft: #c084fc;
+        --magenta: #ec4899;
+
+        --text: #e6eeff;
+        --text-dim: #9aa8d4;
+        --text-mute: #66729a;
+
+        --grad-hero: linear-gradient(120deg, #00e5ff 0%, #5ef0ff 35%, #a855f7 75%, #ec4899 100%);
+        --grad-card: linear-gradient(145deg, rgba(0,229,255,0.08) 0%, rgba(168,85,247,0.05) 60%, rgba(236,72,153,0.04) 100%);
+        --grad-glow: radial-gradient(ellipse at center, rgba(0,229,255,0.25) 0%, rgba(0,229,255,0) 70%);
+
+        --shadow-soft: 0 10px 40px -10px rgba(0, 229, 255, 0.25);
+        --shadow-violet: 0 10px 40px -10px rgba(168, 85, 247, 0.35);
+
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 22px;
+
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        background: var(--bg-0);
+        color: var(--text);
+        line-height: 1.65;
+        overflow-x: hidden;
+        min-height: 100vh;
+        font-feature-settings: "cv11", "ss01";
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Ambient layered background */
+      .bg-ambient {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background:
+          radial-gradient(ellipse 80% 60% at 20% 10%, rgba(30,58,138,0.35) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 85% 30%, rgba(168,85,247,0.18) 0%, transparent 60%),
+          radial-gradient(ellipse 70% 60% at 50% 100%, rgba(0,229,255,0.12) 0%, transparent 60%),
+          linear-gradient(180deg, #03050d 0%, #060a1c 60%, #03050d 100%);
+      }
+
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image:
+          linear-gradient(rgba(120,200,255,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(120,200,255,0.05) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 80%);
+        -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 80%);
+        animation: gridPan 40s linear infinite;
+      }
+
+      @keyframes gridPan {
+        0% { background-position: 0 0, 0 0; }
+        100% { background-position: 60px 60px, 60px 60px; }
+      }
+
+      #particles {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* Selection */
+      ::selection { background: rgba(0,229,255,0.35); color: #fff; }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 10px; height: 10px; }
+      ::-webkit-scrollbar-track { background: var(--bg-0); }
+      ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--cyan), var(--violet)); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--cyan-soft), var(--violet-soft)); }
+
+      /* ============== TYPOGRAPHY ============== */
+      h1, h2, h3, h4 {
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      .mono { font-family: 'JetBrains Mono', monospace; }
+
+      .gradient-text {
+        background: var(--grad-hero);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-size: 200% 200%;
+        animation: gradShift 8s ease infinite;
+      }
+
+      @keyframes gradShift {
+        0%,100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+      }
+
+      .eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 14px;
+        border: 1px solid var(--border-hi);
+        border-radius: 999px;
+        background: rgba(0,229,255,0.05);
+      }
+      .eyebrow::before {
+        content: "";
+        width: 6px; height: 6px;
+        background: var(--cyan);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--cyan);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.3); }
+      }
+
+      /* ============== LAYOUT ============== */
+      .container {
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 28px;
+      }
+
+      section {
+        position: relative;
+        padding: 120px 0;
+      }
+
+      .section-head {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 56px;
+        max-width: 720px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .section-head p {
+        color: var(--text-dim);
+        font-size: 1.05rem;
+      }
+
+      /* ============== NAV ============== */
+      nav.topnav {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        width: calc(100% - 32px);
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 10px 10px 20px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(6,10,28,0.55);
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        transition: all 0.4s var(--ease);
+      }
+      nav.topnav.scrolled {
+        border-color: var(--border-hi);
+        box-shadow: 0 10px 40px -10px rgba(0,0,0,0.6);
+      }
+
+      .nav-brand {
+        display: flex; align-items: center; gap: 10px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text);
+      }
+      .nav-brand .dot {
+        width: 10px; height: 10px;
+        background: var(--cyan);
+        border-radius: 50%;
+        box-shadow: 0 0 12px var(--cyan);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 4px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--text-dim);
+        text-decoration: none;
+        font-size: 0.88rem;
+        padding: 8px 14px;
+        border-radius: 999px;
+        transition: all 0.25s var(--ease);
+      }
+      .nav-links a:hover { color: var(--text); background: rgba(0,229,255,0.08); }
+      .nav-links a.active { color: var(--cyan); background: rgba(0,229,255,0.1); }
+
+      .nav-cta {
+        padding: 9px 18px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--bg-0);
+        background: var(--cyan);
+        border-radius: 999px;
+        text-decoration: none;
+        transition: all 0.3s var(--ease);
+        box-shadow: 0 0 20px rgba(0,229,255,0.4);
+      }
+      .nav-cta:hover { box-shadow: 0 0 30px rgba(0,229,255,0.7); transform: translateY(-1px); }
+
+      .nav-toggle {
+        display: none;
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--text);
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      /* ============== HERO ============== */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 140px 0 80px;
+        position: relative;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.6rem, 6vw, 5.2rem);
+        line-height: 1.02;
+        margin: 22px 0 20px;
+        font-weight: 700;
+      }
+
+      .hero .title-role {
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .hero .tagline {
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+        color: var(--text-dim);
+        max-width: 540px;
+        margin-bottom: 32px;
+      }
+      .hero .tagline .typed { color: var(--cyan-soft); }
+      .hero .tagline .cursor {
+        display: inline-block;
+        width: 2px; height: 1em;
+        background: var(--cyan);
+        margin-left: 2px;
+        vertical-align: text-bottom;
+        animation: blink 1s steps(2) infinite;
+      }
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 24px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.3s var(--ease);
+        font-family: inherit;
+      }
+      .btn-primary {
+        background: linear-gradient(120deg, var(--cyan), var(--violet));
+        color: #03050d;
+        box-shadow: 0 10px 30px -10px rgba(0,229,255,0.6);
+      }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -8px rgba(168,85,247,0.6); }
+      .btn-ghost {
+        background: rgba(15,22,55,0.4);
+        color: var(--text);
+        border-color: var(--border-hi);
+        backdrop-filter: blur(10px);
+      }
+      .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
+
+      .hero-meta {
+        margin-top: 40px;
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .hero-meta .m-item { }
+      .hero-meta .m-val {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .hero-meta .m-val .gradient-text { background: var(--grad-hero); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .hero-meta .m-lbl {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-mute);
+        margin-top: 2px;
+      }
+
+      /* Hero visual: animated molecule */
+      .hero-visual {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        max-width: 520px;
+        margin-left: auto;
+      }
+
+      .orb {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: var(--grad-glow);
+        filter: blur(20px);
+        animation: orbPulse 6s ease-in-out infinite;
+      }
+      @keyframes orbPulse {
+        0%,100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 0.9; transform: scale(1.1); }
+      }
+
+      .hero-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ============== GLASS CARD ============== */
+      .glass {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
+        position: relative;
+        overflow: hidden;
+      }
+      .glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--grad-card);
+        pointer-events: none;
+      }
+      .glass:hover { border-color: var(--border-hi); }
+
+      /* ============== ABOUT ============== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 32px;
+      }
+
+      .about-card { padding: 36px; }
+      .about-card p {
+        color: var(--text-dim);
+        margin-bottom: 16px;
+        font-size: 1.02rem;
+      }
+      .about-card p strong { color: var(--text); font-weight: 500; }
+
+      .about-facts {
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .fact {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding-bottom: 18px;
+        border-bottom: 1px dashed var(--border);
+      }
+      .fact:last-child { border-bottom: none; padding-bottom: 0; }
+      .fact-icon {
+        flex-shrink: 0;
+        width: 38px; height: 38px;
+        border-radius: 10px;
+        background: rgba(0,229,255,0.1);
+        border: 1px solid var(--border-hi);
+        display: grid; place-items: center;
+        color: var(--cyan);
+      }
+      .fact-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-mute);
+      }
+      .fact-value {
+        color: var(--text);
+        font-size: 0.98rem;
+        margin-top: 2px;
+      }
+
+      /* ============== RESEARCH INTERESTS ============== */
+      .interests-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 18px;
+      }
+      .interest-card {
+        padding: 26px 22px;
+        border-radius: var(--radius-md);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+        transition: all 0.4s var(--ease);
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+      }
+      .interest-card::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: var(--radius-md);
+        padding: 1px;
+        background: linear-gradient(120deg, transparent, var(--cyan), transparent);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s var(--ease);
+      }
+      .interest-card:hover { transform: translateY(-4px); }
+      .interest-card:hover::after { opacity: 1; animation: borderSweep 2s linear infinite; }
+
+      @keyframes borderSweep {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+
+      .interest-icon {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(168,85,247,0.12));
+        border: 1px solid var(--border-hi);
+        display: grid; place-items: center;
+        margin-bottom: 16px;
+        color: var(--cyan);
+      }
+      .interest-card h4 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+        color: var(--text);
+      }
+      .interest-card p {
+        font-size: 0.82rem;
+        color: var(--text-mute);
+        line-height: 1.5;
+      }
+
+      /* ============== SKILLS ============== */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+      .skill-card { padding: 32px; }
+      .skill-card h3 { font-size: 1.25rem; margin-bottom: 24px; color: var(--text); }
+
+      .skill-item { margin-bottom: 22px; }
+      .skill-item:last-child { margin-bottom: 0; }
+      .skill-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      .skill-name { font-size: 0.92rem; color: var(--text); }
+      .skill-pct {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: var(--cyan);
+      }
+      .skill-bar {
+        height: 6px;
+        background: rgba(120,200,255,0.08);
+        border-radius: 999px;
+        overflow: hidden;
+        position: relative;
+      }
+      .skill-fill {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--cyan), var(--violet));
+        border-radius: 999px;
+        box-shadow: 0 0 12px rgba(0,229,255,0.6);
+        transition: width 1.4s var(--ease);
+        position: relative;
+      }
+      .skill-fill::after {
+        content: "";
+        position: absolute;
+        right: 0; top: -2px; bottom: -2px;
+        width: 20px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8));
+        filter: blur(4px);
+      }
+
+      .tools-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 10px;
+      }
+      .tool-chip {
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(0,229,255,0.05);
+        border: 1px solid var(--border);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s var(--ease);
+      }
+      .tool-chip:hover {
+        color: var(--cyan);
+        border-color: var(--border-hi);
+        transform: translateY(-2px);
+      }
+      .tool-chip::before {
+        content: "›";
+        color: var(--cyan);
+        font-weight: 600;
+      }
+
+      /* ============== EDUCATION TIMELINE ============== */
+      .edu-card {
+        padding: 36px;
+        position: relative;
+      }
+      .edu-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+      .edu-block h3 {
+        font-size: 1.4rem;
+        margin-bottom: 6px;
+      }
+      .edu-school {
+        color: var(--cyan);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.88rem;
+        margin-bottom: 16px;
+      }
+      .edu-row {
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--border);
+      }
+      .edu-row:last-child { border-bottom: none; }
+      .edu-key {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--text-mute);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        min-width: 110px;
+      }
+      .edu-val { color: var(--text); font-size: 0.95rem; }
+
+      /* ============== MOLECULAR SIM LIBRARY ============== */
+      .sim-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 32px;
+        align-items: center;
+      }
+      .sim-viewer {
+        aspect-ratio: 4/3;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .sim-viewer .hud {
+        position: absolute;
+        top: 16px; left: 16px; right: 16px;
+        display: flex; justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        color: var(--cyan);
+        letter-spacing: 0.1em;
+      }
+      .sim-viewer .hud-bottom {
+        position: absolute;
+        bottom: 14px; left: 16px; right: 16px;
+        display: flex; justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: var(--text-mute);
+        letter-spacing: 0.1em;
+      }
+      .sim-info h3 {
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+      }
+      .sim-info p {
+        color: var(--text-dim);
+        margin-bottom: 14px;
+      }
+      .param-list {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .param-list li {
+        padding: 10px 14px;
+        background: rgba(0,229,255,0.04);
+        border-left: 2px solid var(--cyan);
+        border-radius: 0 8px 8px 0;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.82rem;
+        color: var(--text-dim);
+      }
+      .param-list li b { color: var(--cyan-soft); font-weight: 500; }
+
+      /* ============== QUANTUM TUNNELING VIZ ============== */
+      .tunnel-wrap {
+        padding: 40px 28px 28px;
+        position: relative;
+        overflow: hidden;
+      }
+      .tunnel-hud {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--cyan);
+        letter-spacing: 0.15em;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+      }
+
+      /* ============== MOF-AEROGEL SHOWCASE ============== */
+      .showcase-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .show-card {
+        padding: 28px;
+        position: relative;
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .show-card .show-visual {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        margin: 18px 0;
+      }
+      .show-card h4 { font-size: 1.15rem; margin-bottom: 6px; }
+      .show-card p { color: var(--text-dim); font-size: 0.88rem; }
+      .show-tag {
+        display: inline-block;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.68rem;
+        color: var(--cyan);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      /* ============== PUBLICATIONS ============== */
+      .pub-list { display: grid; gap: 16px; }
+      .pub-card {
+        padding: 26px 28px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 22px;
+        align-items: center;
+      }
+      .pub-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        color: var(--cyan);
+        padding: 6px 10px;
+        border: 1px solid var(--border-hi);
+        border-radius: 8px;
+        background: rgba(0,229,255,0.05);
+        min-width: 60px;
+        text-align: center;
+      }
+      .pub-body h4 { font-size: 1.08rem; margin-bottom: 6px; }
+      .pub-meta {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: var(--text-mute);
+      }
+      .pub-meta span + span::before { content: " · "; color: var(--border-hi); }
+      .pub-tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: rgba(168,85,247,0.1);
+        color: var(--violet-soft);
+        border: 1px solid rgba(168,85,247,0.3);
+        white-space: nowrap;
+      }
+
+      /* ============== CONTACT ============== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 28px;
+      }
+      .contact-card { padding: 36px; }
+      .contact-card h3 { font-size: 1.6rem; margin-bottom: 16px; }
+      .contact-card p { color: var(--text-dim); margin-bottom: 26px; }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.25s var(--ease);
+      }
+      .contact-row:last-child { border-bottom: none; }
+      .contact-row:hover { padding-left: 6px; color: var(--cyan); }
+      .contact-row .c-ico {
+        width: 38px; height: 38px;
+        border-radius: 10px;
+        background: rgba(0,229,255,0.08);
+        border: 1px solid var(--border-hi);
+        display: grid; place-items: center;
+        color: var(--cyan);
+        flex-shrink: 0;
+      }
+      .contact-row .c-key {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+        color: var(--text-mute);
+        text-transform: uppercase;
+      }
+      .contact-row .c-val { font-size: 0.95rem; word-break: break-all; }
+
+      /* Terminal-style contact card */
+      .terminal {
+        padding: 24px;
+        background: rgba(3,5,13,0.8);
+        border: 1px solid var(--border-hi);
+        border-radius: var(--radius-md);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.82rem;
+        line-height: 1.8;
+      }
+      .term-head {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .term-head span {
+        width: 11px; height: 11px;
+        border-radius: 50%;
+        background: #2d3250;
+      }
+      .term-head span:nth-child(1) { background: #ff5f57; }
+      .term-head span:nth-child(2) { background: #ffbd2e; }
+      .term-head span:nth-child(3) { background: #28ca42; }
+      .term-line .prompt { color: var(--cyan); }
+      .term-line .cmd { color: var(--text); }
+      .term-line .out { color: var(--text-dim); padding-left: 14px; }
+      .term-line .ok { color: #28ca42; }
+      .term-line .dim { color: var(--text-mute); }
+
+      /* ============== FOOTER ============== */
+      footer {
+        padding: 50px 0 30px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: var(--text-mute);
+      }
+      footer .foot-brand { color: var(--text); margin-bottom: 6px; }
+      footer a { color: var(--cyan); text-decoration: none; }
+
+      /* ============== REVEAL ANIMATIONS ============== */
+      .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s var(--ease); }
+      .reveal.in { opacity: 1; transform: translateY(0); }
+      .reveal.delay-1 { transition-delay: 0.08s; }
+      .reveal.delay-2 { transition-delay: 0.16s; }
+      .reveal.delay-3 { transition-delay: 0.24s; }
+
+      /* Floating badge */
+      .float-badge {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem;
+        color: var(--cyan);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      /* ============== RESPONSIVE ============== */
+      @media (max-width: 960px) {
+        section { padding: 80px 0; }
+        .hero-grid, .about-grid, .skills-grid, .sim-grid, .edu-grid, .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        .showcase-grid { grid-template-columns: 1fr 1fr; }
+        .hero-visual { max-width: 360px; margin: 0 auto; }
+        .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; padding: 16px; background: rgba(6,10,28,0.95); border: 1px solid var(--border-hi); border-radius: 20px; backdrop-filter: blur(20px); }
+        .nav-links.open { display: flex; }
+        .nav-toggle { display: grid; place-items: center; }
+        .nav-cta { display: none; }
+        .pub-card { grid-template-columns: 1fr; gap: 10px; }
+      }
+      @media (max-width: 640px) {
+        .showcase-grid { grid-template-columns: 1fr; }
+        .hero-meta { gap: 22px; }
+        .hero-meta .m-val { font-size: 1.4rem; }
+      }
+
+      /* ============== CUSTOM ANIMATED SVG ELEMENTS ============== */
+      .mof-lattice line { stroke: rgba(0,229,255,0.25); stroke-width: 1; }
+      .mof-node { fill: var(--cyan); filter: drop-shadow(0 0 4px var(--cyan)); }
+      .mof-link { fill: var(--violet); filter: drop-shadow(0 0 4px var(--violet)); }
+      .h-atom { fill: #fff; filter: drop-shadow(0 0 6px #fff); }
+      .h-path { stroke: rgba(0,229,255,0.4); stroke-width: 1; stroke-dasharray: 4 4; fill: none; }
+
+      /* Wave function stroke animation */
+      .wave-path {
+        fill: none;
+        stroke: url(#waveGrad);
+        stroke-width: 2;
+        filter: drop-shadow(0 0 6px var(--cyan));
+      }
+
+      /* Scanlines subtle */
+      .scanlines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background-image: repeating-linear-gradient(
+          0deg,
+          rgba(0,229,255,0.02) 0px,
+          rgba(0,229,255,0.02) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+        mix-blend-mode: overlay;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Ambient backgrounds -->
+    <div class="bg-ambient"></div>
+    <div class="bg-grid"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- ============= NAVIGATION ============= -->
+    <nav class="topnav" id="topnav">
+      <a href="#hero" class="nav-brand">
+        <span class="dot"></span>
+        <span>CMT<span style="color:var(--text-mute)">·</span>lab</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#simulation">Simulation</a></li>
+        <li><a href="#tunneling">Tunneling</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Collaborate →</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </nav>
+
+    <!-- ============= HERO ============= -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="eyebrow reveal">Quantum Materials · Cryogenic Research</div>
+            <h1 class="reveal delay-1">
+              <span class="gradient-text">Cao Minh Trung</span>
+            </h1>
+            <div class="title-role reveal delay-1">Materials Science Engineer · Computational Researcher</div>
+            <p class="tagline reveal delay-2">
+              Modeling <span class="typed" id="typed"></span><span class="cursor"></span><br />
+              in MOF–Aerogel composite materials at cryogenic temperatures — where quantum mechanics meets clean energy engineering.
+            </p>
+            <div class="hero-cta reveal delay-3">
+              <a href="#research" class="btn btn-primary">
+                Explore Research
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#contact" class="btn btn-ghost">
+                Get in Touch
+              </a>
+            </div>
+
+            <div class="hero-meta reveal delay-3">
+              <div class="m-item">
+                <div class="m-val"><span class="gradient-text">77 K</span></div>
+                <div class="m-lbl">Cryo regime</div>
+              </div>
+              <div class="m-item">
+                <div class="m-val"><span class="gradient-text">H₂</span></div>
+                <div class="m-lbl">Storage focus</div>
+              </div>
+              <div class="m-item">
+                <div class="m-val"><span class="gradient-text">DFT+MD</span></div>
+                <div class="m-lbl">Methods</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal delay-2">
+            <div class="orb"></div>
+            <svg class="hero-svg" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="atomGrad" cx="50%" cy="50%">
+                  <stop offset="0%" stop-color="#fff" />
+                  <stop offset="60%" stop-color="#5ef0ff" />
+                  <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.3" />
+                </radialGradient>
+                <radialGradient id="coreGrad" cx="50%" cy="50%">
+                  <stop offset="0%" stop-color="#fff" />
+                  <stop offset="40%" stop-color="#c084fc" />
+                  <stop offset="100%" stop-color="#a855f7" stop-opacity="0.2" />
+                </radialGradient>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.6" />
+                  <stop offset="100%" stop-color="#a855f7" stop-opacity="0.6" />
+                </linearGradient>
+              </defs>
+
+              <!-- Orbit rings -->
+              <g transform="translate(250 250)">
+                <ellipse cx="0" cy="0" rx="210" ry="70" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.6">
+                  <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="0" cy="0" rx="210" ry="70" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.5" transform="rotate(60)">
+                  <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="28s" repeatCount="indefinite" />
+                </ellipse>
+                <ellipse cx="0" cy="0" rx="210" ry="70" fill="none" stroke="url(#ringGrad)" stroke-width="1" opacity="0.4" transform="rotate(120)">
+                  <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="32s" repeatCount="indefinite" />
+                </ellipse>
+
+                <!-- MOF-like nodes -->
+                <g id="mofNodes"></g>
+
+                <!-- Core -->
+                <circle r="42" fill="url(#coreGrad)" opacity="0.95">
+                  <animate attributeName="r" values="38;46;38" dur="4s" repeatCount="indefinite" />
+                </circle>
+                <circle r="60" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.4">
+                  <animate attributeName="r" values="50;70;50" dur="4s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.4;0;0.4" dur="4s" repeatCount="indefinite" />
+                </circle>
+              </g>
+
+              <!-- Floating hydrogen atoms -->
+              <g id="hAtoms"></g>
+            </svg>
+            <div class="scanlines"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= ABOUT ============= -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">01 · About</div>
+          <h2>Researcher at the edge of <span class="gradient-text">quantum &amp; materials science</span></h2>
+          <p>Bridging computational physics and nanomaterial engineering to design the next generation of clean-energy storage systems.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass about-card reveal">
+            <p><strong>I am a materials science researcher</strong> focused on hydrogen storage, MOF–aerogel composite materials, adsorption–diffusion dynamics, and quantum tunneling at cryogenic temperatures.</p>
+            <p>My work combines <strong>computational modeling</strong>, <strong>thermodynamic analysis</strong>, and <strong>nanomaterial engineering</strong> to understand how hydrogen behaves when confined inside porous architectures at temperatures approaching absolute zero — where classical diffusion gives way to quantum mechanical tunneling.</p>
+            <p>The goal: to design material platforms that can safely, densely, and reversibly store hydrogen for the <strong>clean energy systems of the future</strong> — from fuel cells to space propulsion and deep-cryogenic transport infrastructure.</p>
+          </div>
+
+          <div class="glass about-facts reveal delay-1">
+            <div class="fact">
+              <div class="fact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <div class="fact-label">Education</div>
+                <div class="fact-value">MSc. Chemical Engineering — Can Tho University</div>
+              </div>
+            </div>
+            <div class="fact">
+              <div class="fact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+              </div>
+              <div>
+                <div class="fact-label">Laboratory</div>
+                <div class="fact-value">Advanced Material Laboratory</div>
+              </div>
+            </div>
+            <div class="fact">
+              <div class="fact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+              </div>
+              <div>
+                <div class="fact-label">Advisor</div>
+                <div class="fact-value">Assoc. Prof. PhD. Doan Van Hong Thien</div>
+              </div>
+            </div>
+            <div class="fact">
+              <div class="fact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.3 4.3 4.3 0 0 0-.1-3.3S18.7 2 16 4a13.4 13.4 0 0 0-8 0C5.3 2 4.3 2.4 4.3 2.4a4.3 4.3 0 0 0-.1 3.3A4.6 4.6 0 0 0 3 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+              </div>
+              <div>
+                <div class="fact-label">Github</div>
+                <div class="fact-value">minhtrungengineer</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= RESEARCH INTERESTS ============= -->
+    <section id="research">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">02 · Research Interests</div>
+          <h2>Nine domains shaping my <span class="gradient-text">investigations</span></h2>
+          <p>Each thread below feeds into a unified research program on quantum-influenced hydrogen transport inside nano-porous hybrid materials.</p>
+        </div>
+
+        <div class="interests-grid" id="interestsGrid">
+          <!-- cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= SKILLS ============= -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">03 · Skills &amp; Tools</div>
+          <h2>Research skills &amp; <span class="gradient-text">computational toolkit</span></h2>
+          <p>A blend of scientific methodology and high-performance simulation software.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="glass skill-card reveal">
+            <h3>Core Competencies</h3>
+
+            <div class="skill-item" data-pct="95">
+              <div class="skill-head"><span class="skill-name">Scientific Writing</span><span class="skill-pct">95%</span></div>
+              <div class="skill-bar"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-item" data-pct="92">
+              <div class="skill-head"><span class="skill-name">Computational Modeling</span><span class="skill-pct">92%</span></div>
+              <div class="skill-bar"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-item" data-pct="88">
+              <div class="skill-head"><span class="skill-name">Material Characterization</span><span class="skill-pct">88%</span></div>
+              <div class="skill-bar"><div class="skill-fill"></div></div>
+            </div>
+            <div class="skill-item" data-pct="90">
+              <div class="skill-head"><span class="skill-name">Thermodynamic Analysis</span><span class="skill-pct">90%</span></div>
+              <div class="skill-bar"><div class="skill-fill"></div></div>
+            </div>
+          </div>
+
+          <div class="glass skill-card reveal delay-1">
+            <h3>Computational Stack</h3>
+            <p style="color:var(--text-dim); font-size:0.9rem; margin-bottom: 22px;">
+              From first-principles electronic structure to large-scale Monte Carlo sampling — a stack chosen to cover the physics of quantum H₂ transport.
+            </p>
+            <div class="tools-list">
+              <div class="tool-chip">DFT</div>
+              <div class="tool-chip">MD</div>
+              <div class="tool-chip">Monte Carlo</div>
+              <div class="tool-chip">GCMC</div>
+              <div class="tool-chip">ORCA</div>
+              <div class="tool-chip">VASP</div>
+              <div class="tool-chip">LAMMPS</div>
+              <div class="tool-chip">MATLAB</div>
+              <div class="tool-chip">Python</div>
+              <div class="tool-chip">NumPy</div>
+              <div class="tool-chip">OVITO</div>
+              <div class="tool-chip">VESTA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= EDUCATION ============= -->
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">04 · Education</div>
+          <h2>Academic <span class="gradient-text">trajectory</span></h2>
+        </div>
+
+        <div class="glass edu-card reveal">
+          <div class="edu-grid">
+            <div class="edu-block">
+              <h3>MSc. in Chemical Engineering</h3>
+              <div class="edu-school">› Can Tho University</div>
+              <div class="edu-row"><span class="edu-key">Program</span><span class="edu-val">Chemical Engineering — Graduate Track</span></div>
+              <div class="edu-row"><span class="edu-key">Expected</span><span class="edu-val">Graduation 2024</span></div>
+              <div class="edu-row"><span class="edu-key">Laboratory</span><span class="edu-val">Advanced Material Laboratory</span></div>
+            </div>
+            <div class="edu-block">
+              <h3>Thesis Focus</h3>
+              <div class="edu-school">› Quantum transport in porous hybrids</div>
+              <div class="edu-row"><span class="edu-key">Advisor</span><span class="edu-val">Assoc. Prof. PhD. Doan Van Hong Thien</span></div>
+              <div class="edu-row"><span class="edu-key">Domain</span><span class="edu-val">MOF–Aerogel Composites</span></div>
+              <div class="edu-row"><span class="edu-key">Method</span><span class="edu-val">DFT · GCMC · Path-Integral MD</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= MOLECULAR SIMULATION LIBRARY ============= -->
+    <section id="simulation">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">05 · Molecular Simulation Library</div>
+          <h2>Live view: <span class="gradient-text">H₂ diffusing in a MOF unit cell</span></h2>
+          <p>A simplified real-time rendering of hydrogen molecules exploring the pore network of a metal–organic framework — the same physics I simulate at cryogenic temperatures.</p>
+        </div>
+
+        <div class="glass sim-viewer reveal">
+          <div class="hud">
+            <span>◉ SIM.RUNNING</span>
+            <span>T = 77 K · P = 1 atm</span>
+          </div>
+          <svg id="mofSim" viewBox="0 0 800 600" style="width:100%;height:100%;">
+            <defs>
+              <radialGradient id="h2Grad" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#fff" />
+                <stop offset="50%" stop-color="#5ef0ff" />
+                <stop offset="100%" stop-color="#00e5ff" stop-opacity="0.2" />
+              </radialGradient>
+              <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.6" />
+                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.6" />
+              </linearGradient>
+              <radialGradient id="metalGrad" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#c084fc" />
+                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.4" />
+              </radialGradient>
+            </defs>
+            <g id="mofLattice"></g>
+            <g id="mofH2"></g>
+          </svg>
+          <div class="hud-bottom">
+            <span>frame: <span id="frameCount">0</span></span>
+            <span>Δt = 0.5 fs · 3D periodic</span>
+          </div>
+        </div>
+
+        <div class="sim-grid" style="margin-top: 28px;">
+          <div class="sim-info reveal">
+            <h3>Simulation parameters</h3>
+            <p>Each run solves classical/quantum equations of motion for hundreds of H₂ molecules inside a periodic MOF unit cell — capturing adsorption isotherms, self-diffusion coefficients, and tunneling probabilities.</p>
+            <ul class="param-list">
+              <li><b>Ensemble:</b> NVT / μVT (GCMC) at 77 K</li>
+              <li><b>Force field:</b> UFF + TraPPE-H₂ custom fit</li>
+              <li><b>Quantum correction:</b> Feynman–Hibbs effective potential</li>
+              <li><b>Timesteps:</b> 10⁷ MD · 2×10⁶ GCMC cycles</li>
+              <li><b>Analysis:</b> MSD, RDF, isosteric heat, transmission coeff.</li>
+            </ul>
+          </div>
+          <div class="glass reveal delay-1" style="padding: 28px;">
+            <h3 style="font-size:1.2rem; margin-bottom: 16px;">Observable snapshot</h3>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap: 14px; font-family:'JetBrains Mono',monospace; font-size: 0.82rem;">
+              <div style="padding: 14px; background: rgba(0,229,255,0.05); border-radius: 10px; border: 1px solid var(--border);">
+                <div style="color:var(--text-mute); font-size:0.7rem;">UPTAKE</div>
+                <div style="color:var(--cyan); font-size: 1.3rem; font-weight:600; margin-top: 4px;" id="uptake">3.42 wt%</div>
+              </div>
+              <div style="padding: 14px; background: rgba(168,85,247,0.05); border-radius: 10px; border: 1px solid var(--border);">
+                <div style="color:var(--text-mute); font-size:0.7rem;">D<sub>self</sub></div>
+                <div style="color:var(--violet-soft); font-size: 1.3rem; font-weight:600; margin-top: 4px;" id="dself">1.8×10⁻⁹</div>
+              </div>
+              <div style="padding: 14px; background: rgba(0,229,255,0.05); border-radius: 10px; border: 1px solid var(--border);">
+                <div style="color:var(--text-mute); font-size:0.7rem;">Q<sub>st</sub></div>
+                <div style="color:var(--cyan); font-size: 1.3rem; font-weight:600; margin-top: 4px;">6.2 kJ/mol</div>
+              </div>
+              <div style="padding: 14px; background: rgba(168,85,247,0.05); border-radius: 10px; border: 1px solid var(--border);">
+                <div style="color:var(--text-mute); font-size:0.7rem;">κ<sub>tunnel</sub></div>
+                <div style="color:var(--violet-soft); font-size: 1.3rem; font-weight:600; margin-top: 4px;">0.17</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= QUANTUM TUNNELING ============= -->
+    <section id="tunneling">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">06 · Quantum Tunneling</div>
+          <h2>When hydrogen <span class="gradient-text">passes through walls</span></h2>
+          <p>At cryogenic temperatures, classical diffusion collapses — and H₂ begins to tunnel through energy barriers of the pore network. Below: a live visualization of a wave packet penetrating a potential barrier.</p>
+        </div>
+
+        <div class="glass tunnel-wrap reveal">
+          <div class="tunnel-hud">
+            <span>◉ ψ(x,t) EVOLUTION</span>
+            <span>BARRIER V₀ = 0.12 eV · E = 0.08 eV</span>
+          </div>
+          <svg id="tunnelSvg" viewBox="0 0 900 280" style="width:100%; height:auto;">
+            <defs>
+              <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#00e5ff" />
+                <stop offset="50%" stop-color="#5ef0ff" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+              <linearGradient id="barrierGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6" />
+                <stop offset="100%" stop-color="#a855f7" stop-opacity="0.05" />
+              </linearGradient>
+            </defs>
+            <!-- axis -->
+            <line x1="40" y1="220" x2="860" y2="220" stroke="rgba(120,200,255,0.15)" stroke-width="1" />
+            <text x="40" y="270" fill="var(--text-mute)" font-family="JetBrains Mono" font-size="10">x = 0</text>
+            <text x="820" y="270" fill="var(--text-mute)" font-family="JetBrains Mono" font-size="10">x = L</text>
+            <!-- barrier -->
+            <rect id="barrier" x="400" y="80" width="90" height="140" fill="url(#barrierGrad)" stroke="rgba(168,85,247,0.6)" stroke-width="1" stroke-dasharray="3 3" />
+            <text x="420" y="72" fill="#c084fc" font-family="JetBrains Mono" font-size="10">V(x) = V₀</text>
+            <!-- wave function -->
+            <path id="wavePath" class="wave-path" d="" />
+            <!-- labels -->
+            <text x="120" y="50" fill="var(--cyan)" font-family="JetBrains Mono" font-size="10">INCIDENT ψ</text>
+            <text x="560" y="50" fill="#c084fc" font-family="JetBrains Mono" font-size="10">TRANSMITTED ψ (tunneled)</text>
+          </svg>
+          <div style="display:flex; justify-content: space-between; font-family:'JetBrains Mono',monospace; font-size: 0.72rem; color: var(--text-mute); margin-top: 14px; letter-spacing:0.1em;">
+            <span>|ψ|² gives probability density</span>
+            <span>t = <span id="tunnelTime">0.00</span> fs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= MOF–AEROGEL SHOWCASE ============= -->
+    <section id="materials">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">07 · Materials Showcase</div>
+          <h2>Architecture of the <span class="gradient-text">MOF–Aerogel composite</span></h2>
+          <p>Three structural motifs combine to deliver exceptional hydrogen uptake: the crystalline order of MOFs, the ultralow density of aerogels, and the emergent interface between them.</p>
+        </div>
+
+        <div class="showcase-grid">
+          <div class="glass show-card reveal">
+            <div>
+              <span class="show-tag">01 · Framework</span>
+              <h4>MOF Lattice</h4>
+              <p>Periodic metal-node + organic-linker crystal providing tunable pore geometry and high surface area.</p>
+            </div>
+            <div class="show-visual">
+              <svg viewBox="0 0 200 200" width="100%" style="max-width:200px;">
+                <g id="showMof"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="glass show-card reveal delay-1">
+            <div>
+              <span class="show-tag">02 · Matrix</span>
+              <h4>Silica Aerogel</h4>
+              <p>A nanoporous, 95%+ void network providing mechanical support and macro-scale mass transport.</p>
+            </div>
+            <div class="show-visual">
+              <svg viewBox="0 0 200 200" width="100%" style="max-width:200px;">
+                <g id="showAero"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="glass show-card reveal delay-2">
+            <div>
+              <span class="show-tag">03 · Hybrid</span>
+              <h4>Composite Interface</h4>
+              <p>MOF crystals nucleated inside aerogel pores — combining crystallinity and hierarchical porosity.</p>
+            </div>
+            <div class="show-visual">
+              <svg viewBox="0 0 200 200" width="100%" style="max-width:200px;">
+                <g id="showHybrid"></g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= PUBLICATIONS ============= -->
+    <section id="publications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">08 · Publications &amp; Projects</div>
+          <h2>Ongoing and <span class="gradient-text">in-preparation works</span></h2>
+          <p>A selection of research projects and manuscripts emerging from the Advanced Material Laboratory.</p>
+        </div>
+
+        <div class="pub-list">
+          <div class="glass pub-card reveal">
+            <div class="pub-num">P-01</div>
+            <div class="pub-body">
+              <h4>Quantum Tunneling of H₂ in MOF–Aerogel Composites at 77 K</h4>
+              <div class="pub-meta"><span>C. M. Trung</span><span>D. V. H. Thien</span><span>Manuscript in preparation</span></div>
+            </div>
+            <div class="pub-tag">DFT · PIMD</div>
+          </div>
+          <div class="glass pub-card reveal delay-1">
+            <div class="pub-num">P-02</div>
+            <div class="pub-body">
+              <h4>GCMC Study of Hydrogen Adsorption in Hybrid Porous Architectures</h4>
+              <div class="pub-meta"><span>C. M. Trung</span><span>Can Tho University</span><span>Thesis chapter</span></div>
+            </div>
+            <div class="pub-tag">GCMC</div>
+          </div>
+          <div class="glass pub-card reveal delay-2">
+            <div class="pub-num">P-03</div>
+            <div class="pub-body">
+              <h4>Feynman–Hibbs Corrected Force Fields for Cryogenic H₂ Diffusion</h4>
+              <div class="pub-meta"><span>C. M. Trung</span><span>Computational study</span><span>2024</span></div>
+            </div>
+            <div class="pub-tag">MD</div>
+          </div>
+          <div class="glass pub-card reveal delay-3">
+            <div class="pub-num">PRJ</div>
+            <div class="pub-body">
+              <h4>Open-source Python toolkit for pore-network analysis of MOFs</h4>
+              <div class="pub-meta"><span>minhtrungengineer</span><span>GitHub</span><span>Active</span></div>
+            </div>
+            <div class="pub-tag">Python</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CONTACT ============= -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">09 · Contact</div>
+          <h2>Let's build the <span class="gradient-text">future of hydrogen</span></h2>
+          <p>Open to collaborations in quantum materials, cryogenic adsorption, and computational energy research.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="glass contact-card reveal">
+            <h3>Reach me directly</h3>
+            <p>Whether you're working on MOF design, hydrogen storage, or quantum transport — I'd love to hear about it.</p>
+
+            <a class="contact-row" href="mailto:trungm3825010@gstudent.ctu.edu.vn">
+              <div class="c-ico">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </div>
+              <div>
+                <div class="c-key">Email</div>
+                <div class="c-val">trungm3825010@gstudent.ctu.edu.vn</div>
+              </div>
+            </a>
+
+            <a class="contact-row" href="https://github.com/minhtrungengineer" target="_blank" rel="noopener">
+              <div class="c-ico">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12 11.5 11.5 0 0 0 8.4 23c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C18 4.6 19 4.9 19 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.3v3.4c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+              </div>
+              <div>
+                <div class="c-key">GitHub</div>
+                <div class="c-val">github.com/minhtrungengineer</div>
+              </div>
+            </a>
+
+            <a class="contact-row" href="#about">
+              <div class="c-ico">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div>
+                <div class="c-key">Affiliation</div>
+                <div class="c-val">Can Tho University · Advanced Material Lab</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="glass reveal delay-1" style="padding: 28px; display:flex; flex-direction: column; gap: 18px;">
+            <div class="terminal">
+              <div class="term-head"><span></span><span></span><span></span></div>
+              <div class="term-line"><span class="prompt">researcher@quantum-lab</span>:<span class="cmd">~$ whoami</span></div>
+              <div class="term-line"><span class="out">Cao Minh Trung — Materials Science Engineer</span></div>
+              <div class="term-line"><span class="prompt">researcher@quantum-lab</span>:<span class="cmd">~$ cat focus.txt</span></div>
+              <div class="term-line"><span class="out">› Quantum tunneling at cryogenic T</span></div>
+              <div class="term-line"><span class="out">› H₂ adsorption in MOF–aerogel</span></div>
+              <div class="term-line"><span class="out">› DFT · GCMC · path-integral MD</span></div>
+              <div class="term-line"><span class="prompt">researcher@quantum-lab</span>:<span class="cmd">~$ echo $STATUS</span></div>
+              <div class="term-line"><span class="out ok">● available for collaboration</span></div>
+              <div class="term-line"><span class="prompt">researcher@quantum-lab</span>:<span class="cmd">~$ <span style="animation: blink 1s steps(2) infinite;">▍</span></span></div>
+            </div>
+
+            <div style="font-family:'JetBrains Mono',monospace; font-size: 0.78rem; color: var(--text-mute); text-align: center;">
+              Last update: 2024 · Built with pure HTML/CSS/JS
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="foot-brand">© 2024 Cao Minh Trung · Quantum Materials Research</div>
+        <div>Can Tho University · Advanced Material Laboratory</div>
+      </div>
+    </footer>
+
+    <script>
+    /* ===========================================================
+       QUANTUM MATERIALS RESEARCH SITE · PURE JS
+       =========================================================== */
+
+    /* ---------- Nav scroll + mobile toggle ---------- */
+    const nav = document.getElementById('topnav');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+
+      // Active link
+      const sections = document.querySelectorAll('section[id]');
+      let current = 'hero';
+      sections.forEach(s => {
+        const top = s.getBoundingClientRect().top;
+        if (top < 160) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => navLinks.classList.remove('open'))
+    );
+
+    /* ---------- Typewriter ---------- */
+    const phrases = [
+      'quantum tunneling',
+      'adsorption–diffusion dynamics',
+      'hydrogen storage in MOFs',
+      'cryogenic material behavior'
+    ];
+    const typedEl = document.getElementById('typed');
+    let pIdx = 0, cIdx = 0, deleting = false;
+    function type() {
+      const cur = phrases[pIdx];
+      if (!deleting) {
+        typedEl.textContent = cur.slice(0, ++cIdx);
+        if (cIdx === cur.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        typedEl.textContent = cur.slice(0, --cIdx);
+        if (cIdx === 0) { deleting = false; pIdx = (pIdx + 1) % phrases.length; }
+      }
+      setTimeout(type, deleting ? 35 : 75);
+    }
+    type();
+
+    /* ---------- Reveal on scroll ---------- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          if (e.target.classList.contains('skill-card')) animateSkills(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    function animateSkills(card) {
+      card.querySelectorAll('.skill-item').forEach(item => {
+        const pct = item.dataset.pct;
+        const fill = item.querySelector('.skill-fill');
+        if (fill) setTimeout(() => { fill.style.width = pct + '%'; }, 100);
+      });
+    }
+
+    /* ---------- Research interests cards ---------- */
+    const interests = [
+      { title: 'Hydrogen Storage', desc: 'Clean-energy carriers for a post-fossil world.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><text x="12" y="16" text-anchor="middle" font-family="Inter" font-size="10" fill="currentColor" stroke="none" font-weight="600">H₂</text></svg>' },
+      { title: 'MOF Materials', desc: 'Crystalline porous networks with tunable chemistry.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16"/><path d="M4 4l8 8 8-8M12 12v8"/></svg>' },
+      { title: 'Aerogel Composites', desc: 'Ultralight, high-surface-area silica networks.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M6 7h12M9 17h6"/></svg>' },
+      { title: 'Quantum Tunneling', desc: 'Sub-barrier transport dominating at cryogenic T.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12c3-8 6-8 9 0s6 8 9 0"/><rect x="11" y="6" width="2" height="12" fill="currentColor" opacity="0.2"/></svg>' },
+      { title: 'Adsorption Dynamics', desc: 'Isotherms, kinetics, and site-energy distributions.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17c3-3 6-3 9 0s6 3 9 0"/><path d="M3 12c3-3 6-3 9 0s6 3 9 0"/></svg>' },
+      { title: 'Molecular Simulation', desc: 'MD, GCMC, and path-integral methods at scale.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M8 7l3 9M16 7l-3 9"/></svg>' },
+      { title: 'Cryogenic Physics', desc: 'Phenomena emerging below 100 K.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg>' },
+      { title: 'Density Functional Theory', desc: 'First-principles electronic structure calculations.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18c2-4 5-4 7 0s5 4 7 0 5-4 7 0"/></svg>' },
+      { title: 'Nanomaterials', desc: 'Architectures where quantum meets macro.',
+        icon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M9.5 9.5L6.5 6.5M14.5 9.5l3-3M9.5 14.5l-3 3M14.5 14.5l3 3"/></svg>' }
+    ];
+    const grid = document.getElementById('interestsGrid');
+    interests.forEach((it, i) => {
+      const d = document.createElement('div');
+      d.className = 'interest-card reveal';
+      d.style.transitionDelay = (i * 0.04) + 's';
+      d.innerHTML = `<div class="interest-icon">${it.icon}</div><h4>${it.title}</h4><p>${it.desc}</p>`;
+      grid.appendChild(d);
+      io.observe(d);
+    });
+
+    /* ---------- Particle canvas (cryogenic quantum background) ---------- */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize() {
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function initParticles() {
+      const count = Math.min(120, Math.floor(window.innerWidth / 14));
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+          vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+          r: (Math.random() * 1.6 + 0.4) * devicePixelRatio,
+          hue: Math.random() < 0.7 ? 190 : 280 // cyan or violet
+        });
+      }
+    }
+    initParticles();
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+      // Connect close particles
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i], b = particles[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx*dx + dy*dy);
+          const max = 140 * devicePixelRatio;
+          if (d < max) {
+            const op = 1 - d / max;
+            ctx.strokeStyle = `hsla(${(a.hue+b.hue)/2}, 100%, 70%, ${op*0.22})`;
+            ctx.lineWidth = 0.6 * devicePixelRatio;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+      // Draw points
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
+        grad.addColorStop(0, `hsla(${p.hue}, 100%, 75%, 0.9)`);
+        grad.addColorStop(1, `hsla(${p.hue}, 100%, 70%, 0)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = `hsla(${p.hue}, 100%, 85%, 1)`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    /* ---------- Hero visual: MOF nodes + floating H atoms ---------- */
+    const mofNodesG = document.getElementById('mofNodes');
+    const hAtomsG = document.getElementById('hAtoms');
+    const nodeCount = 18;
+    for (let i = 0; i < nodeCount; i++) {
+      const a = (i / nodeCount) * Math.PI * 2;
+      const r = 110 + (i % 3) * 30;
+      const x = Math.cos(a) * r, y = Math.sin(a) * r;
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', x); c.setAttribute('cy', y);
+      c.setAttribute('r', 3 + (i % 2));
+      c.setAttribute('fill', i % 2 ? 'url(#atomGrad)' : 'url(#coreGrad)');
+      c.style.opacity = 0.8;
+      c.style.animation = `pulse ${3 + (i % 4)}s ease-in-out ${i*0.2}s infinite`;
+      mofNodesG.appendChild(c);
+      // connect to core
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', 0); line.setAttribute('y1', 0);
+      line.setAttribute('x2', x); line.setAttribute('y2', y);
+      line.setAttribute('stroke', 'rgba(0,229,255,0.15)');
+      line.setAttribute('stroke-width', 0.8);
+      mofNodesG.insertBefore(line, mofNodesG.firstChild);
+    }
+    // floating H atoms
+    const hCount = 8;
+    const hAtoms = [];
+    for (let i = 0; i < hCount; i++) {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c1.setAttribute('r', 4);
+      c1.setAttribute('fill', 'url(#atomGrad)');
+      const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c2.setAttribute('cx', 7); c2.setAttribute('r', 4);
+      c2.setAttribute('fill', 'url(#atomGrad)');
+      g.appendChild(c1); g.appendChild(c2);
+      hAtomsG.appendChild(g);
+      hAtoms.push({
+        el: g,
+        x: Math.random() * 500,
+        y: Math.random() * 500,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        angle: Math.random() * Math.PI * 2
+      });
+    }
+    function animH() {
+      hAtoms.forEach(h => {
+        h.x += h.vx; h.y += h.vy;
+        h.angle += 0.01;
+        if (h.x < 20 || h.x > 480) h.vx *= -1;
+        if (h.y < 20 || h.y > 480) h.vy *= -1;
+        h.el.setAttribute('transform', `translate(${h.x} ${h.y}) rotate(${h.angle * 57.3})`);
+      });
+      requestAnimationFrame(animH);
+    }
+    animH();
+
+    /* ---------- MOF simulation viewer ---------- */
+    const mofLattice = document.getElementById('mofLattice');
+    const mofH2 = document.getElementById('mofH2');
+    const cols = 6, rows = 4;
+    const cellW = 110, cellH = 110;
+    const offsetX = 70, offsetY = 80;
+
+    // Draw MOF grid
+    for (let i = 0; i <= cols; i++) {
+      for (let j = 0; j <= rows; j++) {
+        const x = offsetX + i * cellW, y = offsetY + j * cellH;
+        // metal node
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', x); c.setAttribute('cy', y);
+        c.setAttribute('r', 6);
+        c.setAttribute('fill', 'url(#metalGrad)');
+        mofLattice.appendChild(c);
+        // links
+        if (i < cols) {
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x); l.setAttribute('y1', y);
+          l.setAttribute('x2', x + cellW); l.setAttribute('y2', y);
+          l.setAttribute('stroke', 'url(#linkGrad)');
+          l.setAttribute('stroke-width', 1.2);
+          mofLattice.appendChild(l);
+          // organic linker
+          const mid = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          mid.setAttribute('cx', x + cellW/2); mid.setAttribute('cy', y);
+          mid.setAttribute('r', 3);
+          mid.setAttribute('fill', '#5ef0ff');
+          mofLattice.appendChild(mid);
+        }
+        if (j < rows) {
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x); l.setAttribute('y1', y);
+          l.setAttribute('x2', x); l.setAttribute('y2', y + cellH);
+          l.setAttribute('stroke', 'url(#linkGrad)');
+          l.setAttribute('stroke-width', 1.2);
+          mofLattice.appendChild(l);
+          const mid = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          mid.setAttribute('cx', x); mid.setAttribute('cy', y + cellH/2);
+          mid.setAttribute('r', 3);
+          mid.setAttribute('fill', '#5ef0ff');
+          mofLattice.appendChild(mid);
+        }
+      }
+    }
+
+    // H2 molecules wandering in pores
+    const h2Count = 14;
+    const h2 = [];
+    for (let i = 0; i < h2Count; i++) {
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      const c1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c1.setAttribute('r', 5); c1.setAttribute('fill', 'url(#h2Grad)');
+      const c2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c2.setAttribute('cx', 8); c2.setAttribute('r', 5); c2.setAttribute('fill', 'url(#h2Grad)');
+      // trail
+      const tr = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      tr.setAttribute('stroke', 'rgba(0,229,255,0.35)');
+      tr.setAttribute('stroke-width', 0.8);
+      tr.setAttribute('fill', 'none');
+      g.appendChild(tr); g.appendChild(c1); g.appendChild(c2);
+      mofH2.appendChild(g);
+      const ix = Math.floor(Math.random() * cols);
+      const iy = Math.floor(Math.random() * rows);
+      h2.push({
+        el: g, trail: tr, path: [],
+        x: offsetX + ix*cellW + 20 + Math.random()*(cellW-40),
+        y: offsetY + iy*cellH + 20 + Math.random()*(cellH-40),
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: (Math.random() - 0.5) * 1.4,
+        a: Math.random() * Math.PI * 2
+      });
+    }
+
+    let frame = 0;
+    const frameEl = document.getElementById('frameCount');
+    const uptakeEl = document.getElementById('uptake');
+    const dselfEl = document.getElementById('dself');
+    function simStep() {
+      frame++;
+      frameEl.textContent = frame.toString().padStart(6, '0');
+      if (frame % 60 === 0) {
+        uptakeEl.textContent = (3.2 + Math.random()*0.5).toFixed(2) + ' wt%';
+        dselfEl.textContent = (1.5 + Math.random()*0.8).toFixed(1) + '×10⁻⁹';
+      }
+      h2.forEach(m => {
+        // random kick
+        m.vx += (Math.random() - 0.5) * 0.25;
+        m.vy += (Math.random() - 0.5) * 0.25;
+        // damp
+        m.vx *= 0.96; m.vy *= 0.96;
+        m.x += m.vx; m.y += m.vy;
+        // bounce inside lattice
+        const minX = offsetX + 12, maxX = offsetX + cols*cellW - 12;
+        const minY = offsetY + 12, maxY = offsetY + rows*cellH - 12;
+        if (m.x < minX) { m.x = minX; m.vx *= -1; }
+        if (m.x > maxX) { m.x = maxX; m.vx *= -1; }
+        if (m.y < minY) { m.y = minY; m.vy *= -1; }
+        if (m.y > maxY) { m.y = maxY; m.vy *= -1; }
+        // avoid metal nodes (repulsion near corners)
+        const gx = Math.round((m.x - offsetX) / cellW);
+        const gy = Math.round((m.y - offsetY) / cellH);
+        const nx = offsetX + gx * cellW;
+        const ny = offsetY + gy * cellH;
+        const dx = m.x - nx, dy = m.y - ny;
+        const dd = Math.sqrt(dx*dx + dy*dy);
+        if (dd < 18 && dd > 0) {
+          m.x += (dx / dd) * (18 - dd);
+          m.y += (dy / dd) * (18 - dd);
+          m.vx *= -0.5; m.vy *= -0.5;
+        }
+        m.a = Math.atan2(m.vy, m.vx);
+        m.el.setAttribute('transform', `translate(${m.x} ${m.y}) rotate(${m.a * 57.3})`);
+        // trail
+        m.path.push([m.x, m.y]);
+        if (m.path.length > 30) m.path.shift();
+        if (m.path.length > 2) {
+          let d = 'M' + m.path[0][0] + ' ' + m.path[0][1];
+          for (let k = 1; k < m.path.length; k++) d += ' L' + m.path[k][0] + ' ' + m.path[k][1];
+          m.trail.setAttribute('d', d);
+        }
+      });
+      requestAnimationFrame(simStep);
+    }
+    simStep();
+
+    /* ---------- Quantum tunneling wave function ---------- */
+    const wavePath = document.getElementById('wavePath');
+    const tunnelTimeEl = document.getElementById('tunnelTime');
+    const W0 = 900;
+    let t = 0;
+    const BARRIER_L = 400, BARRIER_R = 490, BARRIER_TOP = 80, BASELINE = 220;
+
+    function psi(x, t) {
+      // Gaussian wave packet traveling right, with barrier interaction
+      const k0 = 0.18;          // wave number
+      const x0 = 180;           // initial center
+      const sigma = 40;
+      const v = 1.3;            // group velocity (pixels/frame-ish)
+      const xc = x0 + v * t;
+      const env = Math.exp(-((x - xc) ** 2) / (2 * sigma * sigma));
+      const carrier = Math.cos(k0 * (x - xc) * 4);
+
+      // Barrier attenuation inside the barrier (exponential decay)
+      let amp = env;
+      if (x > BARRIER_L && x < BARRIER_R) {
+        const depth = (x - BARRIER_L) / (BARRIER_R - BARRIER_L);
+        amp *= Math.exp(-depth * 2.5);
+      }
+      // Transmitted amplitude reduced
+      if (x >= BARRIER_R) {
+        amp *= 0.35;
+      }
+      return amp * carrier;
+    }
+
+    function drawWave() {
+      t += 0.6;
+      let d = '';
+      for (let x = 40; x <= 860; x += 3) {
+        const y = BASELINE - psi(x, t) * 90;
+        d += (x === 40 ? 'M' : 'L') + x.toFixed(1) + ' ' + y.toFixed(1);
+      }
+      wavePath.setAttribute('d', d);
+      tunnelTimeEl.textContent = (t * 0.05).toFixed(2);
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
+
+    /* ---------- Materials showcase: draw MOF, aerogel, hybrid ---------- */
+    function drawShowMof() {
+      const g = document.getElementById('showMof');
+      const size = 200, nodes = 4, gap = size / (nodes - 1);
+      for (let i = 0; i < nodes; i++) {
+        for (let j = 0; j < nodes; j++) {
+          const x = i * gap, y = j * gap;
+          if (i < nodes - 1) {
+            const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            l.setAttribute('x1', x); l.setAttribute('y1', y);
+            l.setAttribute('x2', x + gap); l.setAttribute('y2', y);
+            l.setAttribute('stroke', 'url(#linkGrad)');
+            l.setAttribute('stroke-width', 1.5);
+            g.appendChild(l);
+          }
+          if (j < nodes - 1) {
+            const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            l.setAttribute('x1', x); l.setAttribute('y1', y);
+            l.setAttribute('x2', x); l.setAttribute('y2', y + gap);
+            l.setAttribute('stroke', 'url(#linkGrad)');
+            l.setAttribute('stroke-width', 1.5);
+            g.appendChild(l);
+          }
+          const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          c.setAttribute('cx', x); c.setAttribute('cy', y);
+          c.setAttribute('r', 4);
+          c.setAttribute('fill', '#c084fc');
+          c.style.filter = 'drop-shadow(0 0 4px #a855f7)';
+          g.appendChild(c);
+        }
+      }
+    }
+    function drawShowAero() {
+      const g = document.getElementById('showAero');
+      // Random filament network
+      const pts = [];
+      for (let i = 0; i < 28; i++) {
+        pts.push([Math.random()*200, Math.random()*200]);
+      }
+      pts.forEach(([x, y], i) => {
+        // connect to ~3 nearest
+        const others = pts
+          .map((p, k) => ({k, d: Math.hypot(p[0]-x, p[1]-y)}))
+          .filter(o => o.k !== i && o.d < 70)
+          .sort((a,b) => a.d - b.d)
+          .slice(0, 3);
+        others.forEach(o => {
+          const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          l.setAttribute('x1', x); l.setAttribute('y1', y);
+          l.setAttribute('x2', pts[o.k][0]); l.setAttribute('y2', pts[o.k][1]);
+          l.setAttribute('stroke', 'rgba(0,229,255,0.4)');
+          l.setAttribute('stroke-width', 0.8);
+          g.appendChild(l);
+        });
+        const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        c.setAttribute('cx', x); c.setAttribute('cy', y);
+        c.setAttribute('r', 1.8);
+        c.setAttribute('fill', '#5ef0ff');
+        g.appendChild(c);
+      });
+    }
+    function drawShowHybrid() {
+      const g = document.getElementById('showHybrid');
+      // Aerogel background filaments
+      for (let i = 0; i < 40; i++) {
+        const x1 = Math.random()*200, y1 = Math.random()*200;
+        const x2 = x1 + (Math.random()-0.5)*60, y2 = y1 + (Math.random()-0.5)*60;
+        const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        l.setAttribute('x1', x1); l.setAttribute('y1', y1);
+        l.setAttribute('x2', x2); l.setAttribute('y2', y2);
+        l.setAttribute('stroke', 'rgba(0,229,255,0.2)');
+        l.setAttribute('stroke-width', 0.6);
+        g.appendChild(l);
+      }
+      // Embedded MOF crystal
+      const cx = 100, cy = 100, size = 60, nodes = 3, gap = size/(nodes-1);
+      for (let i = 0; i < nodes; i++) {
+        for (let j = 0; j < nodes; j++) {
+          const x = cx - size/2 + i*gap, y = cy - size/2 + j*gap;
+          if (i < nodes - 1) {
+            const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            l.setAttribute('x1', x); l.setAttribute('y1', y);
+            l.setAttribute('x2', x + gap); l.setAttribute('y2', y);
+            l.setAttribute('stroke', '#c084fc');
+            l.setAttribute('stroke-width', 1.5);
+            g.appendChild(l);
+          }
+          if (j < nodes - 1) {
+            const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            l.setAttribute('x1', x); l.setAttribute('y1', y);
+            l.setAttribute('x2', x); l.setAttribute('y2', y + gap);
+            l.setAttribute('stroke', '#c084fc');
+            l.setAttribute('stroke-width', 1.5);
+            g.appendChild(l);
+          }
+          const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          c.setAttribute('cx', x); c.setAttribute('cy', y);
+          c.setAttribute('r', 3.5);
+          c.setAttribute('fill', '#c084fc');
+          c.style.filter = 'drop-shadow(0 0 4px #a855f7)';
+          g.appendChild(c);
+        }
+      }
+    }
+    drawShowMof(); drawShowAero(); drawShowHybrid();
+
+    /* ---------- Smooth focus on hash change ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const t = document.querySelector(id);
+          if (t) {
+            e.preventDefault();
+            t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            history.pushState(null, '', id);
+          }
+        }
+      });
+    });
+
+    </script>
   </body>
 </html>
